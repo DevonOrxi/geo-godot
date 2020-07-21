@@ -1,6 +1,6 @@
 class_name PlayerCondition
 
-var _next_state: PlayerState
+var _next_state
 var _player
 
 func _init(player):
