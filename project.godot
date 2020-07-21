@@ -12,10 +12,34 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://script/Player.gd"
+"path": "res://script/entities/player/Player.gd"
+}, {
+"base": "Reference",
+"class": "PlayerCondition",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/PlayerCondition.gd"
+}, {
+"base": "Reference",
+"class": "PlayerFSM",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/PlayerFSM.gd"
+}, {
+"base": "PlayerState",
+"class": "PlayerFloorState",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/states/PlayerFloorState.gd"
+}, {
+"base": "Reference",
+"class": "PlayerState",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/PlayerState.gd"
 } ]
 _global_script_class_icons={
-"Player": ""
+"Player": "",
+"PlayerCondition": "",
+"PlayerFSM": "",
+"PlayerFloorState": "",
+"PlayerState": ""
 }
 
 [application]
