@@ -1,9 +1,16 @@
 extends KinematicBody2D
 
+class_name Player
+
 enum State {
 	FLOOR,
 	JUMPING,
 	WARPING
+}
+
+enum Facing {
+	LEFT,
+	RIGHT
 }
 
 const _gravity_abs = 512
@@ -16,13 +23,17 @@ var _up_vector = Vector2(0, -1)
 var _str_input_h = 0
 var _did_input_v = false
 
+export var warped = false
+export(Facing) var facing = Facing.RIGHT
+
 onready var _animatedSprite = $AnimatedSprite
 
 func _ready():
 	_animatedSprite.play("idle")
+	_set_warp_collisions()
 
 func _physics_process(delta):
-	_update_player_input()	
+	_update_player_input()
 	_apply_gravity(delta)
 	_set_x_speed()
 	
@@ -70,3 +81,14 @@ func _apply_gravity(delta):
 func _update_player_input():
 	_str_input_h = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	_did_input_v = Input.is_action_just_pressed("ui_up")
+
+func _set_warp_collisions():
+	set_collision_mask_bit(1, warped)
+	set_collision_mask_bit(2, !warped)
+
+class Conditions:
+	static func grounded(player: Player):
+		return player.is_on_floor() if player.warped else player.is_on_ceiling()
+	
+	static func airborne(player: Player):
+		return !grounded(player)
