@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PlayerCondition",
+"class": "FloorToJumpCondition",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/conditions/FloorToJumpCondition.gd"
+}, {
+"base": "Reference",
+"class": "InputManager",
+"language": "GDScript",
+"path": "res://script/entities/InputManager.gd"
+}, {
+"base": "PlayerCondition",
+"class": "JumpToFloorCondition",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/conditions/JumpToFloorCondition.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -29,17 +44,32 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://script/entities/player/fsm/states/PlayerFloorState.gd"
 }, {
+"base": "PlayerState",
+"class": "PlayerJumpState",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/states/PlayerJumpState.gd"
+}, {
 "base": "Reference",
 "class": "PlayerState",
 "language": "GDScript",
 "path": "res://script/entities/player/fsm/PlayerState.gd"
+}, {
+"base": "Reference",
+"class": "PlayerStateType",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/PlayerStateType.gd"
 } ]
 _global_script_class_icons={
+"FloorToJumpCondition": "",
+"InputManager": "",
+"JumpToFloorCondition": "",
 "Player": "",
 "PlayerCondition": "",
 "PlayerFSM": "",
 "PlayerFloorState": "",
-"PlayerState": ""
+"PlayerJumpState": "",
+"PlayerState": "",
+"PlayerStateType": ""
 }
 
 [application]

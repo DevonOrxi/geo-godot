@@ -10,14 +10,11 @@ enum Facing {
 const _gravity_abs = 512
 const _jump_force_abs = 128
 const _run_speed = 80
-const PlayerStateType = preload("res://script/entities/player/fsm/PlayerStateType.gd").PlayerStateType
 
-#var _state = State.FLOOR
+var _state: PlayerState
 var _velocity = Vector2()
 var _up_vector = Vector2(0, -1)
-var _str_input_h = 0
-var _did_input_v = false
-var _FSM
+var _fsm: PlayerFSM
 
 export var warped = false
 export(Facing) var facing = Facing.RIGHT
@@ -30,7 +27,6 @@ func _ready():
 	_set_fsm()
 
 func _physics_process(delta):
-	_update_player_input()
 	_apply_gravity(delta)
 	_set_x_speed()
 	
@@ -45,7 +41,7 @@ func _physics_process(delta):
 	move_and_slide(_velocity, _up_vector)
 
 func _state_idle():	
-	if _did_input_v:
+	if InputManager.has_just_pressed_up():
 		_start_state_jumping()
 	else:
 		if _velocity.x != 0:
@@ -68,20 +64,15 @@ func _start_state_jumping():
 	_animatedSprite.play("jump")
 
 func _set_x_speed():
-	_velocity.x = _str_input_h * _run_speed
+	_velocity.x = InputManager.get_x_input_strength() * _run_speed
 
 func _apply_gravity(delta):
 	var new_vel_y = _velocity.y + _gravity_abs * delta * (-_up_vector.y)
 	_velocity.y = clamp(new_vel_y, - _jump_force_abs, _jump_force_abs)
 
-# TODO: Pasar a otra clase
-func _update_player_input():
-	_str_input_h = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	_did_input_v = Input.is_action_just_pressed("ui_up")
-
 func _set_warp_collisions():
 	set_collision_mask_bit(1, warped)
-	set_collision_mask_bit(2, !warped)
+	set_collision_mask_bit(2, not warped)
 
 func _set_fsm():
-	_FSM = PlayerFSM.new(self)
+	_fsm = PlayerFSM.new(self)

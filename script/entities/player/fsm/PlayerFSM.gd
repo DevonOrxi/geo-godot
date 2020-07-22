@@ -2,29 +2,32 @@ class_name PlayerFSM
 
 var _player
 var _current_state
-var _states: Array = []
+var _states: Array = [
+	PlayerFloorState.new(_player),
+	PlayerJumpState.new(_player)
+]
 
 func _init(player):
 	_player = player
-	add_state(PlayerFloorState.new(_player))
+	_current_state = _states[0]
 
-func add_state(state):
-	var i = 0
+func _fsm_step(delta):
+	_current_state.update(delta)
+	_ask_for_state_change()
+
+func _ask_for_state_change():
+	var next_state_type = _current_state.find_possible_next_state()
 	
-	while i < _states.size():
-		var i_state = _states[i]
+	if next_state_type != null and next_state_type is PlayerStateType:
+		var next_state = _get_state_with_type(next_state_type)
 		
-		if i_state != null and i_state.type == state.type:
-			return
-	
-	_states.append(state)
+		if next_state != null:
+			_current_state.exit()
+			_current_state = next_state
+			next_state.enter()
 
-func update():
-	var next_state = _current_state.find_possible_next_state()
-	
-	if next_state != null:
-		_current_state.exit()
-		_current_state = next_state
-		next_state.enter()
-	
-	_current_state.update()
+func _get_state_with_type(type: PlayerStateType):
+	for state in _states:
+		if state.type == type:
+			return state
+	return

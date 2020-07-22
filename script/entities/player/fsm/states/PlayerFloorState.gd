@@ -3,4 +3,4 @@ extends PlayerState
 class_name PlayerFloorState
 
 func _init(player).(player):
-	pass
+	_conditions.append(FloorToJumpCondition.new(player))

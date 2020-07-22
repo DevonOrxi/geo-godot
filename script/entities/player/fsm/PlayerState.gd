@@ -2,7 +2,7 @@ class_name PlayerState
 
 var _conditions: Array = []
 var _player
-var type
+var _type
 
 func _init(player):
 	_player = player
@@ -10,7 +10,7 @@ func _init(player):
 func enter():
 	pass
 
-func update():
+func update(delta):
 	pass
 
 func exit():
@@ -20,7 +20,7 @@ func find_possible_next_state() -> PlayerState:
 	var i = 0
 	
 	while i < _conditions.size():
-		var condition = _conditions[i]
+		var condition = _conditions[i] as PlayerCondition
 		if _is_condition_valid(condition) and condition.evaluate():
 			return condition.get_next_state()
 	
