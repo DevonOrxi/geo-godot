@@ -4,17 +4,19 @@ var _conditions: Array = []
 var _player
 var _type
 
+const PlayerStateType = preload("res://script/entities/player/fsm/PlayerStateType.gd").PlayerStateType
+
 func _init(player):
 	_player = player
 
 func enter():
-	pass
+	print("Entered state " + PlayerStateType.keys()[_type])
 
 func update(delta):
 	pass
 
 func exit():
-	pass
+	print("Exited state " + PlayerStateType.keys()[_type])
 
 func find_possible_next_state() -> PlayerState:
 	var i = 0

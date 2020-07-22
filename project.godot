@@ -53,11 +53,6 @@ _global_script_classes=[ {
 "class": "PlayerState",
 "language": "GDScript",
 "path": "res://script/entities/player/fsm/PlayerState.gd"
-}, {
-"base": "Reference",
-"class": "PlayerStateType",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/PlayerStateType.gd"
 } ]
 _global_script_class_icons={
 "FloorToJumpCondition": "",
@@ -68,8 +63,7 @@ _global_script_class_icons={
 "PlayerFSM": "",
 "PlayerFloorState": "",
 "PlayerJumpState": "",
-"PlayerState": "",
-"PlayerStateType": ""
+"PlayerState": ""
 }
 
 [application]

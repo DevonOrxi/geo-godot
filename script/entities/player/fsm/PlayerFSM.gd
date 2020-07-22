@@ -7,24 +7,35 @@ var _states: Array = [
 	PlayerJumpState.new(_player)
 ]
 
+const PlayerStateType = preload("res://script/entities/player/fsm/PlayerStateType.gd")
+
 func _init(player):
 	_player = player
-	_current_state = _states[0]
+	_change_state_to(_states[0])
 
 func _fsm_step(delta):
-	_current_state.update(delta)
-	_ask_for_state_change()
+	if _current_state != null:
+		_current_state.update(delta)
+		_evaluate_and_try_state_change()
+	else:
+		print("Invalid current state for Player in fsm_step")
 
-func _ask_for_state_change():
+func _evaluate_and_try_state_change():
 	var next_state_type = _current_state.find_possible_next_state()
 	
 	if next_state_type != null and next_state_type is PlayerStateType:
 		var next_state = _get_state_with_type(next_state_type)
-		
-		if next_state != null:
+		_change_state_to(next_state)
+
+func _change_state_to(next_state):
+	if next_state != null:
+		if _current_state != null:
 			_current_state.exit()
-			_current_state = next_state
-			next_state.enter()
+		
+		_current_state = next_state
+		next_state.enter()
+	else:
+		print("Invalid next state for Player in change_state")
 
 func _get_state_with_type(type: PlayerStateType):
 	for state in _states:

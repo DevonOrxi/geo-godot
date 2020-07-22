@@ -4,3 +4,4 @@ class_name PlayerFloorState
 
 func _init(player).(player):
 	_conditions.append(FloorToJumpCondition.new(player))
+	_type = PlayerStateType.FLOOR
