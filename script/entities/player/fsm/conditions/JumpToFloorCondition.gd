@@ -8,5 +8,5 @@ func _init(player).(player):
 func evaluate() -> bool:
 	return _player.is_on_floor()
 
-func get_next_state_type() -> PlayerStateType:
+func get_next_state_type():
 	return PlayerStateType.FLOOR

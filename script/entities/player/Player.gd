@@ -30,13 +30,7 @@ func _physics_process(delta):
 	_apply_gravity(delta)
 	_set_x_speed()
 	
-#	match _state:
-#		State.FLOOR:
-#			_state_idle()
-#		State.JUMPING:
-#			_state_jumping()
-#		State.WARPING:
-#			_state_warping()
+	_fsm.step(delta)
 	
 	move_and_slide(_velocity, _up_vector)
 

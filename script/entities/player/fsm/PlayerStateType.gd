@@ -1,4 +1,4 @@
-enum PlayerStateType {
+enum StateType {
 	FLOOR,
 	JUMPING
 }
