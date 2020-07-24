@@ -20,4 +20,10 @@ func update(delta):
 	_player.update_all_movement(delta)
 
 func _set_animation():
-	_player.animatedSprite.play("jump")
+	if _player.velocity.y * _player.up_vector.y >= 0:
+		_player.animatedSprite.play("jump")
+	else:
+		_player.animatedSprite.play("fall")
+	
+	if _player.velocity.x != 0:
+		_player.animatedSprite.flip_h = _player.velocity.x < 0
