@@ -27,7 +27,7 @@ func find_possible_next_state() -> PlayerState:
 	while i < _conditions.size():
 		var condition = _conditions[i] as PlayerCondition
 		
-		if condition.evaluate():
+		if condition != null and condition.evaluate():
 			return condition.get_next_state_type()
 		
 		i += 1
