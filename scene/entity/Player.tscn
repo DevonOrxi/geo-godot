@@ -83,5 +83,15 @@ animation = "idle"
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D"]
-position = Vector2( 0, -7 )
+position = Vector2( 1, -7 )
 polygon = PoolVector2Array( -5, -6, 3, -6, 3, 7, -5, 7 )
+
+[node name="LeftFootRaycast" type="RayCast2D" parent="KinematicBody2D"]
+position = Vector2( -3, 0 )
+cast_to = Vector2( 0, 1 )
+collision_mask = 0
+
+[node name="RightFootRaycast" type="RayCast2D" parent="KinematicBody2D"]
+position = Vector2( 3, 0 )
+cast_to = Vector2( 0, 1 )
+collision_mask = 0
