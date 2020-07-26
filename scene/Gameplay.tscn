@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resource/white_bg_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://scene/entity/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/entity/player/Player.tscn" type="PackedScene" id=2]
 
 [node name="Gameplay" type="Node2D"]
 

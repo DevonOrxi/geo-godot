@@ -1,14 +1,14 @@
+extends Node
 class_name PlayerFSM
 
-var _player
+onready var _player = .get_parent()
 var _current_state
 
 var _states: Array = []
 
 const PlayerStateType = preload("res://script/entities/player/fsm/PlayerStateType.gd").StateType
 
-func _init(player):
-	_player = player
+func start():
 	_init_states_array()
 	_change_state_to(_states[0])
 
@@ -16,7 +16,7 @@ func _init_states_array():
 	_states.append(PlayerFloorState.new(_player))
 	_states.append(PlayerJumpState.new(_player))
 
-func step(delta):
+func _physics_process(delta):
 	if _current_state != null:
 		_current_state.update(delta)
 		_evaluate_and_try_state_change()

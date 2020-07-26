@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://script/entities/player/fsm/PlayerCondition.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "PlayerFSM",
 "language": "GDScript",
 "path": "res://script/entities/player/fsm/PlayerFSM.gd"

@@ -14,19 +14,15 @@ const _run_speed = 80
 var velocity = Vector2()
 var up_vector = Vector2(0, -1)
 
-var _fsm: PlayerFSM
-
 export var warped = false
 export(Facing) var facing = Facing.RIGHT
 
 onready var animatedSprite = $AnimatedSprite
+onready var fsm = $FSM
 
 func _ready():
 	_set_warp_collisions()
-	_set_fsm()
-
-func _physics_process(delta):
-	_fsm.step(delta)
+	fsm.start()
 
 func input_x_speed():
 	velocity.x = InputManager.get_x_input_strength() * _run_speed
@@ -41,9 +37,6 @@ func apply_gravity(delta):
 func _set_warp_collisions():
 	set_collision_mask_bit(1, warped)
 	set_collision_mask_bit(2, not warped)
-	
-func _set_fsm():
-	_fsm = PlayerFSM.new(self)
 
 func update_all_movement(delta):
 	apply_gravity(delta)
