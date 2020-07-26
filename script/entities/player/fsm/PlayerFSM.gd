@@ -13,8 +13,8 @@ func start():
 	_change_state_to(_states[0])
 
 func _init_states_array():
-	_states.append(PlayerFloorState.new(_player))
-	_states.append(PlayerJumpState.new(_player))
+	_states.append(FloorState.new(_player))
+	_states.append(JumpState.new(_player))
 
 func _physics_process(delta):
 	if _current_state != null:

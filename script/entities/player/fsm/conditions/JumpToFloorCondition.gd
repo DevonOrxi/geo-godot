@@ -2,7 +2,7 @@ extends PlayerCondition
 
 class_name JumpToFloorCondition
 
-func _init(player).(player):
+func _init(player: Player).(player):
 	pass
 
 func evaluate() -> bool:

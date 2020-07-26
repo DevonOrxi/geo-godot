@@ -2,11 +2,14 @@ extends PlayerCondition
 
 class_name FloorToJumpCondition
 
-func _init(player).(player):
+func _init(player: Player).(player):
 	pass
 
 func evaluate() -> bool:
-	return not _player.is_on_floor()
+	if not _player.warped:
+		return _player.is_on_floor()
+	else:
+		return _player.is_on_ceiling()
 
 func get_next_state_type():
 	return PlayerStateType.JUMPING

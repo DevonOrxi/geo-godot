@@ -3,7 +3,7 @@ class_name PlayerState
 const PlayerStateType = preload("res://script/entities/player/fsm/PlayerStateType.gd").StateType
 
 var _conditions: Array = []
-var _player
+var _player: Player
 var _type
 
 func _init(player):

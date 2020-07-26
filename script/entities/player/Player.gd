@@ -31,13 +31,23 @@ func input_jump():
 	velocity.y = _jump_force_abs * up_vector.y
 
 func apply_gravity(delta):
-	var new_vel_y = velocity.y + _gravity_abs * delta * (- up_vector.y)
+	var new_vel_y = velocity.y + _gravity_abs * delta * (-up_vector.y)
 	velocity.y = clamp(new_vel_y, - _jump_force_abs, _jump_force_abs)
+
+func update_all_movement(delta):
+	apply_gravity(delta)
+	velocity = move_and_slide(velocity, up_vector)
 
 func _set_warp_collisions():
 	set_collision_mask_bit(1, warped)
 	set_collision_mask_bit(2, not warped)
 
-func update_all_movement(delta):
-	apply_gravity(delta)
-	velocity = move_and_slide(velocity, up_vector)
+func _pause_collisions():
+	set_collision_mask_bit(1, false)
+	set_collision_mask_bit(2, false)
+
+func on_start_warping():
+	_pause_collisions()
+
+func on_end_warping():
+	_set_warp_collisions()

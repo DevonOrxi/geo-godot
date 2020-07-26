@@ -1,4 +1,5 @@
 enum StateType {
 	FLOOR,
-	JUMPING
+	JUMPING,
+	WARPING
 }
