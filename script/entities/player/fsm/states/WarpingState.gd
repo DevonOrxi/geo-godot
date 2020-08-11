@@ -2,8 +2,12 @@ extends PlayerState
 
 class_name WarpingState
 
-var tween = Tween.new()
+var callback_tween = Tween.new()
+var scale_tween = Tween.new()
 var next_y_dir: float
+
+# TODO: Mover esto
+var _warp_time = 0.25
 
 func _init(player).(player):
 #	_conditions.append(JumpToFloorCondition.new(player))
@@ -26,8 +30,11 @@ func _set_animation():
 func _start_warping():
 	var p_scale = _player.get_scale()
 	
-	tween.interpolate_property(_player, "scale", p_scale, Vector2(p_scale.x, next_y_dir), 0.25)
-	tween.interpolate_callback(self, 0.25, "_mid_warping")
+	scale_tween.interpolate_property(_player, "scale", p_scale, Vector2(p_scale.x, next_y_dir), _warp_time)
+	callback_tween.interpolate_callback(self, _warp_time / 2, "_mid_warping")
+	
+	scale_tween.start()
+	callback_tween.start()
 	
 	_player.on_start_warping()
 	
@@ -35,9 +42,10 @@ func _start_warping():
 func _mid_warping():
 #	Change color
 	_player.warped = not _player.warped
-	
 	_player.up_vector = Vector2(0, next_y_dir)
-	pass
+	
+	callback_tween.interpolate_callback(self, _warp_time / 2, "_end_warping")
+	callback_tween.start()
 
 func _end_warping():
 	_player.on_end_warping()

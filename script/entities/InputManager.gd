@@ -5,3 +5,6 @@ static func get_x_input_strength() -> float:
 
 static func has_just_pressed_up() -> bool:
 	return Input.is_action_just_pressed("ui_up")
+
+static func has_just_pressed_down() -> bool:
+	return Input.is_action_just_pressed("ui_down")

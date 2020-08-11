@@ -46,6 +46,7 @@ func _pause_collisions():
 	set_collision_mask_bit(1, false)
 	set_collision_mask_bit(2, false)
 
+# TODO: Signals maybe?
 func on_start_warping():
 	_pause_collisions()
 
