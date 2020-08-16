@@ -17,10 +17,18 @@ func update(delta):
 	_player.input_x_speed()
 	_set_animation()
 	
-	if InputManager.has_just_pressed_up():
-		_player.input_jump()
+	_check_jump()
+	_check_warp()
 	
 	_player.update_all_movement(delta)
+
+func _check_jump():
+	if InputManager.has_just_pressed_jump(_player.warped):
+		_player.execute_jump()
+
+func _check_warp():
+	if InputManager.has_just_pressed_warp(_player.warped):
+		_player.execute_warp()
 
 func _set_animation():
 	if _player.velocity.x != 0:

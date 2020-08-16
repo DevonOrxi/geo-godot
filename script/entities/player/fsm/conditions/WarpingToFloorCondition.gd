@@ -1,12 +1,12 @@
 extends PlayerCondition
 
-class_name FloorToJumpCondition
+class_name WarpingToFloorCondition
 
 func _init(player: Player).(player):
 	pass
 
 func evaluate() -> bool:
-	return not _player.is_on_floor()
+	return not _player.is_warping
 
 func get_next_state_type():
-	return PlayerStateType.JUMPING
+	return PlayerStateType.FLOOR

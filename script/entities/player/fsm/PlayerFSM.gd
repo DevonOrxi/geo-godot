@@ -15,6 +15,7 @@ func start():
 func _init_states_array():
 	_states.append(FloorState.new(_player))
 	_states.append(JumpState.new(_player))
+	_states.append(WarpingState.new(_player))
 
 func _physics_process(delta):
 	if _current_state != null:

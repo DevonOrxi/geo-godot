@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "WarpingState",
 "language": "GDScript",
 "path": "res://script/entities/player/fsm/states/WarpingState.gd"
+}, {
+"base": "PlayerCondition",
+"class": "WarpingToFloorCondition",
+"language": "GDScript",
+"path": "res://script/entities/player/fsm/conditions/WarpingToFloorCondition.gd"
 } ]
 _global_script_class_icons={
 "FloorState": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "PlayerCondition": "",
 "PlayerFSM": "",
 "PlayerState": "",
-"WarpingState": ""
+"WarpingState": "",
+"WarpingToFloorCondition": ""
 }
 
 [application]

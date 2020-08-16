@@ -13,6 +13,7 @@ const _run_speed = 80
 
 var velocity = Vector2()
 var up_vector = Vector2(0, -1)
+var is_warping = false
 
 export var warped = false
 export(Facing) var facing = Facing.RIGHT
@@ -27,8 +28,11 @@ func _ready():
 func input_x_speed():
 	velocity.x = InputManager.get_x_input_strength() * _run_speed
 
-func input_jump():
+func execute_jump():
 	velocity.y = _jump_force_abs * up_vector.y
+
+func execute_warp():
+	is_warping = true
 
 func apply_gravity(delta):
 	var new_vel_y = velocity.y + _gravity_abs * delta * (-up_vector.y)
@@ -51,4 +55,5 @@ func on_start_warping():
 	_pause_collisions()
 
 func on_end_warping():
+	is_warping = false
 	_set_warp_collisions()

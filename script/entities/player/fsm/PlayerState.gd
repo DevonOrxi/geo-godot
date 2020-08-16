@@ -12,7 +12,7 @@ func _init(player):
 func enter():
 	print("Entered state " + PlayerStateType.keys()[_type])
 
-func update(delta):
+func update(_delta):
 	pass
 
 func exit():
