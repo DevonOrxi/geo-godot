@@ -1,8 +1,8 @@
 class_name ColorPalette
 
-var first_color: Color
-var second_color: Color
+var top_color: Color
+var bottom_color: Color
 
-func _init(first: Color, second: Color):
-	self.first_color = first
-	self.second_color = second
+func _init(top: Color, bottom: Color):
+	self.top_color = top
+	self.bottom_color = bottom
