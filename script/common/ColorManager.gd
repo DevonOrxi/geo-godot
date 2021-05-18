@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const P0_WHITE = Color8(255, 255, 255)
 const P0_RED = Color8(237, 30, 36)

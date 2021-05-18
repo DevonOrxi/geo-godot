@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 func get_x_input_strength() -> float:
 	return Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

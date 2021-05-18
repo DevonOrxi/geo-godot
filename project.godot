@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "ColorPalette",
 "language": "GDScript",
-"path": "res://script/ColorPalette.gd"
+"path": "res://script/common/ColorPalette.gd"
 }, {
 "base": "PlayerState",
 "class": "FloorState",
@@ -29,6 +29,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://script/entities/player/fsm/conditions/FloorToWarpingCondition.gd"
 }, {
+"base": "Node2D",
+"class": "Gameplay",
+"language": "GDScript",
+"path": "res://scene/Gameplay.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Goal",
+"language": "GDScript",
+"path": "res://script/entities/goal/Goal.gd"
+}, {
 "base": "PlayerState",
 "class": "JumpState",
 "language": "GDScript",
@@ -38,6 +48,11 @@ _global_script_classes=[ {
 "class": "JumpToFloorCondition",
 "language": "GDScript",
 "path": "res://script/entities/player/fsm/conditions/JumpToFloorCondition.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scene/level/Level.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -74,8 +89,11 @@ _global_script_class_icons={
 "FloorState": "",
 "FloorToJumpCondition": "",
 "FloorToWarpingCondition": "",
+"Gameplay": "",
+"Goal": "",
 "JumpState": "",
 "JumpToFloorCondition": "",
+"Level": "",
 "Player": "",
 "PlayerCondition": "",
 "PlayerFSM": "",
@@ -87,13 +105,14 @@ _global_script_class_icons={
 [application]
 
 config/name="GEO"
-run/main_scene="res://scene/Gameplay.tscn"
+run/main_scene="res://scene/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-InputManager="*res://script/InputManager.gd"
-ColorManager="*res://script/ColorManager.gd"
+InputManager="*res://script/common/InputManager.gd"
+ColorManager="*res://script/common/ColorManager.gd"
+LevelManager="*res://script/common/LevelManager.gd"
 
 [display]
 
@@ -137,7 +156,8 @@ texture={
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true
