@@ -1,7 +1,8 @@
-extends KinematicBody2D
+extends Area2D
 
 class_name Goal
 
+signal goal_reached
 export var warped = false
 
 onready var animatedSprite = $AnimatedSprite
@@ -16,3 +17,6 @@ func _set_color():
 
 func _play_animation():
 	animatedSprite.play("idle")
+
+func _on_player_body_entered(_body: Player):
+	emit_signal("goal_reached")

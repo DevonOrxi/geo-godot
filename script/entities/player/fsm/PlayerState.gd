@@ -10,13 +10,15 @@ func _init(player):
 	_player = player
 
 func enter():
-	print("Entered state " + PlayerStateType.keys()[_type])
+#	print("Entered state " + PlayerStateType.keys()[_type])
+	pass
 
 func update(_delta):
 	pass
 
 func exit():
-	print("Exited state " + PlayerStateType.keys()[_type])
+#	print("Exited state " + PlayerStateType.keys()[_type])
+	pass
 
 func get_type():
 	return _type

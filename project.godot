@@ -30,11 +30,16 @@ _global_script_classes=[ {
 "path": "res://script/entities/player/fsm/conditions/FloorToWarpingCondition.gd"
 }, {
 "base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://script/Game.gd"
+}, {
+"base": "Node2D",
 "class": "Gameplay",
 "language": "GDScript",
-"path": "res://scene/Gameplay.gd"
+"path": "res://script/main/gameplay/Gameplay.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Area2D",
 "class": "Goal",
 "language": "GDScript",
 "path": "res://script/entities/goal/Goal.gd"
@@ -52,7 +57,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
-"path": "res://scene/level/Level.gd"
+"path": "res://script/main/gameplay/level/Level.gd"
+}, {
+"base": "Node2D",
+"class": "LevelManager",
+"language": "GDScript",
+"path": "res://script/main/gameplay/LevelManager.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -89,11 +99,13 @@ _global_script_class_icons={
 "FloorState": "",
 "FloorToJumpCondition": "",
 "FloorToWarpingCondition": "",
+"Game": "",
 "Gameplay": "",
 "Goal": "",
 "JumpState": "",
 "JumpToFloorCondition": "",
 "Level": "",
+"LevelManager": "",
 "Player": "",
 "PlayerCondition": "",
 "PlayerFSM": "",
@@ -112,7 +124,7 @@ config/icon="res://icon.png"
 
 InputManager="*res://script/common/InputManager.gd"
 ColorManager="*res://script/common/ColorManager.gd"
-LevelManager="*res://script/common/LevelManager.gd"
+Settings="*res://script/common/Settings.gd"
 
 [display]
 
