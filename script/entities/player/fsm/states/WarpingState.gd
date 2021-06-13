@@ -18,6 +18,8 @@ func _init(player).(player):
 func enter():
 	.enter()
 	
+	_player.is_warping = true
+	
 	_next_up_dir = UP_Y if _player.warped else DOWN_Y
 	_player.add_child(_tween)
 	
