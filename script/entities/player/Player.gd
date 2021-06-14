@@ -50,10 +50,14 @@ func update_all_movement(delta):
 func _set_warp_collisions():
 	set_collision_mask_bit(1, warped)
 	set_collision_mask_bit(2, not warped)
+	set_collision_mask_bit(3, warped)
+	set_collision_mask_bit(4, not warped)
 
 func _pause_collisions():
 	set_collision_mask_bit(1, false)
 	set_collision_mask_bit(2, false)
+	set_collision_mask_bit(3, false)
+	set_collision_mask_bit(4, false)
 	left_foot_raycast.collision_mask = 0
 	right_foot_raycast.collision_mask = 0
 

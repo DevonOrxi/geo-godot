@@ -136,6 +136,10 @@ window/size/test_height=480
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
+[global]
+
+layer=false
+
 [importer_defaults]
 
 texture={
@@ -164,6 +168,8 @@ texture={
 2d_physics/layer_1="entities"
 2d_physics/layer_2="red_obstacle"
 2d_physics/layer_3="white_obstacle"
+2d_physics/layer_4="red_unwarpable"
+2d_physics/layer_5="white_unwarpable"
 
 [rendering]
 

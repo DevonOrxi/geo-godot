@@ -6,7 +6,8 @@ var _current_level_index: int = 0
 var _all_levels: Array = [
 #	"res://scene/level/progression/Level_001.tscn",
 #	"res://scene/level/progression/Level_002.tscn",
-	"res://scene/level/progression/Level_003.tscn"
+#	"res://scene/level/progression/Level_003.tscn"
+	"res://scene/level/Demo.tscn"
 ]
 
 func get_level() -> Level:
