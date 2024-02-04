@@ -1,0 +1,7 @@
+res://default_env.tres
+res://scene/level/LevelManager.tscn
+res://scene/Game.tscn
+res://script/entities/player/Player.gd
+res://scene/level/Demo.tscn
+res://scene/entity/player/Player.tscn
+res://script/entities/player/fsm/states/WarpingState.gd

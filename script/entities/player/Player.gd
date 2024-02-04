@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 class_name Player
 
@@ -11,18 +11,17 @@ const _gravity_abs = 512
 const _jump_force_abs = 140
 const _run_speed = 80
 
-var velocity = Vector2()
 var up_vector = Vector2(0, -1)
 var is_warping = false
 var has_both_feet_floored = false
 
-export var warped = false
-export(Facing) var facing = Facing.RIGHT
+@export var warped = false
+@export var facing: Facing = Facing.RIGHT
 
-onready var animatedSprite = $AnimatedSprite
-onready var fsm = $FSM
-onready var left_foot_raycast = $LeftFootRaycast
-onready var right_foot_raycast = $RightFootRaycast
+@onready var animatedSprite = $AnimatedSprite2D
+@onready var fsm = $FSM
+@onready var left_foot_raycast = $LeftFootRaycast
+@onready var right_foot_raycast = $RightFootRaycast
 
 func _ready():
 	_set_warp_collisions()
@@ -45,19 +44,22 @@ func apply_gravity(delta):
 
 func update_all_movement(delta):
 	apply_gravity(delta)
-	velocity = move_and_slide(velocity, up_vector)
+	set_velocity(velocity)
+	set_up_direction(up_vector)
+	move_and_slide()
+	velocity = velocity
 
 func _set_warp_collisions():
-	set_collision_mask_bit(1, warped)
-	set_collision_mask_bit(2, not warped)
-	set_collision_mask_bit(3, warped)
-	set_collision_mask_bit(4, not warped)
+	set_collision_mask_value(1, warped)
+	set_collision_mask_value(2, not warped)
+	set_collision_mask_value(3, warped)
+	set_collision_mask_value(4, not warped)
 
 func _pause_collisions():
-	set_collision_mask_bit(1, false)
-	set_collision_mask_bit(2, false)
-	set_collision_mask_bit(3, false)
-	set_collision_mask_bit(4, false)
+	set_collision_mask_value(1, false)
+	set_collision_mask_value(2, false)
+	set_collision_mask_value(3, false)
+	set_collision_mask_value(4, false)
 	left_foot_raycast.collision_mask = 0
 	right_foot_raycast.collision_mask = 0
 

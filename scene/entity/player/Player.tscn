@@ -1,101 +1,129 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=15 format=3 uid="uid://dfkwrye0fqwip"]
 
-[ext_resource path="res://asset/player.png" type="Texture" id=1]
-[ext_resource path="res://script/entities/player/Player.gd" type="Script" id=2]
-[ext_resource path="res://script/entities/player/fsm/PlayerFSM.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://d0sxgm4iifql7" path="res://asset/player.png" id="1"]
+[ext_resource type="Script" path="res://script/entities/player/Player.gd" id="2"]
+[ext_resource type="Script" path="res://script/entities/player/fsm/PlayerFSM.gd" id="3"]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("1")
+region = Rect2(64, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 16, 16, 16 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 16, 16, 16 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 16, 16, 16 )
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("1")
+region = Rect2(48, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 16, 16, 16 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 16, 16, 16 )
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("1")
+region = Rect2(16, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("1")
+region = Rect2(32, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id=11]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+[sub_resource type="SpriteFrames" id="11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("8")
+}],
 "loop": true,
-"name": "idle",
+"name": &"fall",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("10")
+}],
 "loop": true,
-"name": "run",
+"name": &"hurt",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 8 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}],
 "loop": true,
-"name": "fall",
+"name": &"idle",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 9 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("9")
+}],
 "loop": true,
-"name": "jump",
+"name": &"jump",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 10 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}],
 "loop": true,
-"name": "hurt",
+"name": &"run",
 "speed": 6.0
-} ]
+}]
 
-[node name="Player" type="KinematicBody2D"]
-script = ExtResource( 2 )
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("2")
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -8, -16 )
-frames = SubResource( 11 )
-animation = "idle"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -16)
+sprite_frames = SubResource("11")
+animation = &"idle"
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 1, -7 )
-polygon = PoolVector2Array( -5, -6, 3, -6, 3, 7, -5, 7 )
+position = Vector2(1, -7)
+polygon = PackedVector2Array(-5, -6, 3, -6, 3, 7, -5, 7)
 
 [node name="LeftFootRaycast" type="RayCast2D" parent="."]
-position = Vector2( -3, 0 )
-enabled = true
-cast_to = Vector2( 0, 1 )
+position = Vector2(-3, 0)
+target_position = Vector2(0, 1)
 collision_mask = 0
 
 [node name="RightFootRaycast" type="RayCast2D" parent="."]
-position = Vector2( 3, 0 )
-enabled = true
-cast_to = Vector2( 0, 1 )
+position = Vector2(3, 0)
+target_position = Vector2(0, 1)
 collision_mask = 0
 
 [node name="FSM" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")

@@ -2,16 +2,17 @@ extends PlayerState
 
 class_name JumpState
 
-func _init(player).(player):
+func _init(player):
+	super(player)
 	_conditions.append(JumpToFloorCondition.new(player))
 	_type = PlayerStateType.JUMPING
 
 func enter():
-	.enter()
+	super.enter()
 	_set_animation()
 
 func update(delta):
-	.update(delta)
+	super.update(delta)
 	
 	_player.input_x_speed()
 	

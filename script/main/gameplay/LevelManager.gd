@@ -13,7 +13,7 @@ var _all_levels: Array = [
 func get_level() -> Level:
 	var normalizedIndex = _normalize(_current_level_index)
 	var levelPath = _all_levels[normalizedIndex]
-	var level = ResourceLoader.load(levelPath).instance()
+	var level = ResourceLoader.load(levelPath).instantiate()
 	
 	return level
 

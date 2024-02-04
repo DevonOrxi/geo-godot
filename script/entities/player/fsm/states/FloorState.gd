@@ -2,17 +2,18 @@ extends PlayerState
 
 class_name FloorState
 
-func _init(player).(player):
+func _init(player):
+	super(player)
 	_conditions.append(FloorToJumpCondition.new(player))
 	_conditions.append(FloorToWarpingCondition.new(player))
 	_type = PlayerStateType.FLOOR
 
 func enter():
-	.enter()
+	super.enter()
 	_set_animation()
 
 func update(delta):
-	.update(delta)
+	super.update(delta)
 	
 	_player.input_x_speed()
 	_set_animation()

@@ -3,9 +3,9 @@ extends Area2D
 class_name Goal
 
 signal goal_reached
-export var warped = false
+@export var warped = false
 
-onready var animatedSprite = $AnimatedSprite
+@onready var animatedSprite = $AnimatedSprite2D
 
 func _ready():
 	_set_color()

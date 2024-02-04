@@ -2,7 +2,8 @@ extends PlayerCondition
 
 class_name FloorToWarpingCondition
 
-func _init(player: Player).(player):
+func _init(player: Player):
+	super(player)
 	pass
 
 func evaluate() -> bool:

@@ -8,7 +8,7 @@ var _all_palettes: Array = [
 	ColorPalette.new(P0_WHITE, P0_RED)
 ]
 
-onready var _current_palette: ColorPalette = _all_palettes[_current_palette_index]
+@onready var _current_palette: ColorPalette = _all_palettes[_current_palette_index]
 
 func get_current_palette() -> ColorPalette:
 	return _current_palette

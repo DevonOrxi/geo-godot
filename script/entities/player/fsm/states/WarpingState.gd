@@ -11,15 +11,15 @@ var _next_up_dir: float
 # TODO: Mover esto
 var _warp_time = 0.25
 
-func _init(player).(player):
+func _init(player):
+	super(player)
 	_conditions.append(WarpingToFloorCondition.new(player))
 	_type = PlayerStateType.WARPING
 
 func enter():
-	.enter()
+	super.enter()
 	
 	_player.is_warping = true
-	
 	_next_up_dir = UP_Y if _player.warped else DOWN_Y
 	_player.add_child(_tween)
 	
@@ -27,7 +27,7 @@ func enter():
 	_start_warping()
 
 func update(delta):
-	.update(delta)
+	super.update(delta)
 
 func _set_animation():
 	_player.animatedSprite.play("idle")

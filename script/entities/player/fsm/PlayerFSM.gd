@@ -1,7 +1,7 @@
 extends Node
 class_name PlayerFSM
 
-onready var _player = .get_parent()
+@onready var _player = super.get_parent()
 var _current_state
 
 var _states: Array = []

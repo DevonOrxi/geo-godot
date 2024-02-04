@@ -6,118 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Reference",
-"class": "ColorPalette",
-"language": "GDScript",
-"path": "res://script/common/ColorPalette.gd"
-}, {
-"base": "PlayerState",
-"class": "FloorState",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/states/FloorState.gd"
-}, {
-"base": "PlayerCondition",
-"class": "FloorToJumpCondition",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/conditions/FloorToJumpCondition.gd"
-}, {
-"base": "PlayerCondition",
-"class": "FloorToWarpingCondition",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/conditions/FloorToWarpingCondition.gd"
-}, {
-"base": "Node2D",
-"class": "Game",
-"language": "GDScript",
-"path": "res://script/Game.gd"
-}, {
-"base": "Node2D",
-"class": "Gameplay",
-"language": "GDScript",
-"path": "res://script/main/gameplay/Gameplay.gd"
-}, {
-"base": "Area2D",
-"class": "Goal",
-"language": "GDScript",
-"path": "res://script/entities/goal/Goal.gd"
-}, {
-"base": "PlayerState",
-"class": "JumpState",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/states/JumpState.gd"
-}, {
-"base": "PlayerCondition",
-"class": "JumpToFloorCondition",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/conditions/JumpToFloorCondition.gd"
-}, {
-"base": "Node2D",
-"class": "Level",
-"language": "GDScript",
-"path": "res://script/main/gameplay/level/Level.gd"
-}, {
-"base": "Node2D",
-"class": "LevelManager",
-"language": "GDScript",
-"path": "res://script/main/gameplay/LevelManager.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://script/entities/player/Player.gd"
-}, {
-"base": "Reference",
-"class": "PlayerCondition",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/PlayerCondition.gd"
-}, {
-"base": "Node",
-"class": "PlayerFSM",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/PlayerFSM.gd"
-}, {
-"base": "Reference",
-"class": "PlayerState",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/PlayerState.gd"
-}, {
-"base": "PlayerState",
-"class": "WarpingState",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/states/WarpingState.gd"
-}, {
-"base": "PlayerCondition",
-"class": "WarpingToFloorCondition",
-"language": "GDScript",
-"path": "res://script/entities/player/fsm/conditions/WarpingToFloorCondition.gd"
-} ]
-_global_script_class_icons={
-"ColorPalette": "",
-"FloorState": "",
-"FloorToJumpCondition": "",
-"FloorToWarpingCondition": "",
-"Game": "",
-"Gameplay": "",
-"Goal": "",
-"JumpState": "",
-"JumpToFloorCondition": "",
-"Level": "",
-"LevelManager": "",
-"Player": "",
-"PlayerCondition": "",
-"PlayerFSM": "",
-"PlayerState": "",
-"WarpingState": "",
-"WarpingToFloorCondition": ""
-}
+config_version=5
 
 [application]
 
 config/name="GEO"
 run/main_scene="res://scene/Game.tscn"
+config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [autoload]
@@ -128,13 +23,12 @@ Settings="*res://script/common/Settings.gd"
 
 [display]
 
-window/size/width=256
-window/size/height=240
+window/size/viewport_width=256
+window/size/viewport_height=240
 window/size/resizable=false
-window/size/test_width=512
-window/size/test_height=480
+window/size/window_width_override=512
+window/size/window_height_override=480
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
 
 [global]
 
@@ -173,9 +67,8 @@ texture={
 
 [rendering]
 
+environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
 quality/2d/use_pixel_snap=true
